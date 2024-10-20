@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { type } from '@testing-library/user-event/dist/type';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -47,8 +48,31 @@ console.warn("Ahh... Warning", arr, obj);
 console.log("more parameters: ", arr, obj, hello);
 
 // destructuring objects in JS
- 
+ let car= {id: 5000,style: 'converible'};
+ let id,style;        // or just assign without declaration eg. let {id,style}=car 
+ ({id, style} = car); 
+ //  error ===> {id,style} = car;
+ console.log(id,style);
 
+//  spread syntax reverse for rest parameter
+function startCar(car1,car2,car3){
+  console.log("cars: ",car1,car2,car3);
+}
+startCar(...carIds);
+
+let carCodes='abcd';
+startCar(...carCodes);
+// can use spread and rest at same time eg function startCar(car1,car2,...rest){  and startCar(...carIds);
+
+// typeof() built in function 
+
+console.log(typeof(null)+", "+typeof(true) +", " + typeof(function startCar(car1,car2,car3){
+  console.log("cars: ",car1,car2,car3);
+}));
+
+var foo=45;
+console.log(typeof(foo.toString())+" == "+ foo.toString());
+console.log(Number.parseInt('89'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

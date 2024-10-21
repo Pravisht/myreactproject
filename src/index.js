@@ -74,6 +74,48 @@ var foo=45;
 console.log(typeof(foo.toString())+" == "+ foo.toString());
 console.log(Number.parseInt('89'));
 
+//block scope
+let message = "outside and inside";
+if(5===5){
+  let message = "inside only";
+  console.log(message);
+  var constantmsg = "behave like declared top of file";
+  console.log(constantmsg);
+} 
+console.log(message);
+console.log(constantmsg);
+
+// IIFE (Immediately Invoked Function Expression)
+let app = (function(){
+  let carId= 123;
+  console.log('Inside IIFE');
+  return{};
+})();
+console.log('assigning a function to a variabel and immediately invoking it with IIFE ',app);
+
+// closures
+let app1=(function(){
+  let carId=1234;
+  let getId=function(){
+    return carId;
+  };
+  return {
+    getId: getId     //closure 
+  };
+})();
+console.log('use IIFE and closure to get value inside a function',app1.getId());
+
+// this keyword
+let o={
+  carId : 123,
+  getId : function(){
+    console.log('the this keyword inside the function ',this);
+    return this.carId;
+  }
+};
+console.log('use this keyword to access objs: ',o.getId());
+
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

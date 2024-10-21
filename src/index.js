@@ -105,17 +105,55 @@ let app1=(function(){
 })();
 console.log('use IIFE and closure to get value inside a function',app1.getId());
 
-// this keyword
+// the this keyword
 let o={
   carId : 123,
   getId : function(){
-    console.log('the this keyword inside the function ',this);
+    console.log('using this keyword inside the function --> ',this);
     return this.carId;
   }
 };
-console.log('use this keyword to access objs: ',o.getId());
+console.log('using this keyword to access objs --> ',o.getId());
 
+// call to give diff context object
+let newCar={carId:456};
+console.log('using call with a function --> ',o.getId.call(newCar));
 
+// using apply to pass arguments too
+let o1={
+  carId : 123,
+  getId : function(prefix,p2){
+    return prefix+p2+this.carId;
+  }
+};
+
+let newCar1={carId:1089};
+console.log('using apply with a function --> ',o1.getId.apply(newCar1,['ID: ','as it is '])); 
+
+// using bind to get a copy of a particular function along with diff context obj
+let newCar2={carId:3487};
+let newFn = o.getId.bind(newCar2);
+console.log('using bind with a function --> ',newFn());
+
+// Arrow Function
+let arrow1=()=>123;
+console.log('sample arrow function --> ',arrow1());
+
+let arrow4= _ =>123;
+console.log('sample arrow function with _ istead of () --> ',arrow4());
+
+let arrow2=prefix=>prefix+123;                      //no need of () if arguments is 1
+console.log('arrow function with 1 parameter --> ',arrow2('pre '));
+
+let arrow3=(prefix,suffix)=>{return prefix+123+suffix;};         //need return if {} are used
+console.log('arrow function with 2 parameter --> ',arrow3('pre ',' suff'));
+
+// default parameters
+let trackCar = function(carId,city='NY'){
+  return `Tracking ${carId} in ${city}.`; 
+};
+console.log('using default city parameter --> ',trackCar(123));
+console.log('providing all parameters --> ',trackCar(4657,'LA'));
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

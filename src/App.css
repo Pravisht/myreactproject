@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+
+
+body{
+  background-color: #2a2438; 
+   text-align: center;
+  height:100%;
+  width:100%;
+}
+input{
+background-color: #282c34;
+color:azure;
+outline: none;
+}
+.inputBox{
+  width: auto;
+  height:auto;
+  padding: 30px;
+  /* border: 5px solid #dbd8e3; */
+  background-color: #352f44;
+  /* text-align: center; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.displayBox{ 
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap:wrap;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+  margin: 5px 30px 5px 90px ;
+}
+.displayBox .task{
+  flex-basis: 40%;
+}
+* {
+  box-sizing: border-box;
+}
+
+.task{
+  background: #5c5470;
+  padding: 5px;
+  margin: 5px 5px 5px 5px;
+}
+
+@media (max-width: 400px) {
+  .displayBox {
+    display: block;
+    .task{
+      width:100%;
+      margin: 10px 10px 10px 10px;
+    }
+  }
+}
+#btnRemoveTask{
+}
+#btnEditTask{
+  
+}
+.footer{
+  /* align-items: end; */
+  margin-top: 100%;
+}
+
+.outer-div
+{
+  border-radius: 0%;
+  border:5px solid wheat;
+  padding: 15px;
+  color: aqua;
+  display : flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-align: center;
+  margin: 10%;
 }
